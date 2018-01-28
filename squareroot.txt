@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+float babylonianSqrt (double toFind){
+  float error = 0.0000001;
+  float num = toFind;
+  while((num - toFind/num) > error){
+    num = (num + toFind/num)/2;
+  }
+
+  return num;
+}
+
+int main(void) {
+  //Example (Just for checking the algorithm)
+  double f = 16;
+  double root = babylonianSqrt(f);
+  printf("%f ", root);
+}

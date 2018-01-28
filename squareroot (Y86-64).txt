@@ -1,0 +1,42 @@
+babylonianSqrt(double):
+  push rbp
+  mov rbp, rsp
+  movsd QWORD PTR [rbp-24], xmm0
+  movss xmm0, DWORD PTR .LC0[rip]
+  movss DWORD PTR [rbp-8], xmm0
+  cvtsd2ss xmm3, QWORD PTR [rbp-24]
+  movss DWORD PTR [rbp-4], xmm3
+
+.L4:
+  cvtss2sd xmm0, DWORD PTR [rbp-4]
+  cvtss2sd xmm1, DWORD PTR [rbp-4]
+  movsd xmm2, QWORD PTR [rbp-24]
+  divsd xmm2, xmm1
+  movapd xmm1, xmm2
+  subsd xmm0, xmm1
+  cvtss2sd xmm1, DWORD PTR [rbp-8]
+  ucomisd xmm0, xmm1
+  jbe .L7
+  cvtss2sd xmm1, DWORD PTR [rbp-4]
+  cvtss2sd xmm0, DWORD PTR [rbp-4]
+  movsd xmm2, QWORD PTR [rbp-24]
+  divsd xmm2, xmm0
+  movapd xmm0, xmm2
+  addsd xmm0, xmm1
+  movsd xmm1, QWORD PTR .LC1[rip]
+  divsd xmm0, xmm1
+  cvtsd2ss xmm4, xmm0
+  movss DWORD PTR [rbp-4], xmm4
+  jmp .L4
+
+.L7:
+  movss xmm0, DWORD PTR [rbp-4]
+  pop rbp
+  ret
+
+.LC0:
+  .long 869711765
+  
+.LC1:
+  .long 0
+  .long 1073741824 

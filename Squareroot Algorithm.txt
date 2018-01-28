@@ -1,0 +1,12 @@
+ Babylonian Method to find the algorithm.
+
+Algorithm:
+
+Make a guess, here I have assigned the number itself as the guess value.
+Divide the original number by the guess.
+Set an error limit (Here I have set the error limit as 0.0000001)
+Now subtract the quotient (from step 2) from the guessed number.
+Now check if the number from the step 4 is greater than the error.
+if it is, then set the guessed number as (sum of the last guessed number and the quotient from step 2) divided by 2.
+Iterate steps 4 - 6 until the value from step 3 is less then the error value.
+Once this condition is met, you will get the squre-root of the desired number. 
